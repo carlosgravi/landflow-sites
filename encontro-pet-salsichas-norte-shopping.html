@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encontro Pet - Salsichas | Norte Shopping</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://carlosgravi.github.io/landflow-sites/cidades_br.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #2a1446 0%, #031835 50%, #185665 100%);
+            min-height: 100vh;
+            color: #dfe2e6;
+            overflow-x: hidden;
+        }
+
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(156, 104, 141, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(15, 113, 113, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 80%, rgba(24, 86, 101, 0.06) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 460px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            background: rgba(42, 20, 70, 0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(156, 104, 141, 0.2);
+        }
+
+        .event-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #9c688d, #0f7171);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            box-shadow: 0 8px 25px rgba(156, 104, 141, 0.3);
+        }
+
+        .event-title {
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #9c688d, #0f7171);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .event-subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #dfe2e6;
+            opacity: 0.9;
+        }
+
+        .event-date {
+            font-size: 14px;
+            font-weight: 500;
+            color: #9c688d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 12px;
+        }
+
+        .description {
+            background: rgba(24, 86, 101, 0.15);
+            padding: 24px;
+            border-radius: 15px;
+            margin-bottom: 32px;
+            border: 1px solid rgba(15, 113, 113, 0.2);
+            text-align: center;
+        }
+
+        .description p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #dfe2e6;
+            margin-bottom: 12px;
+        }
+
+        .highlight {
+            color: #9c688d;
+            font-weight: 600;
+        }
+
+        .form-container {
+            background: rgba(42, 20, 70, 0.2);
+            padding: 32px 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(156, 104, 141, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-title {
+            font-size: 24px;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 28px;
+            color: #dfe2e6;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #9c688d;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(223, 226, 230, 0.08);
+            border: 1px solid rgba(156, 104, 141, 0.2);
+            border-radius: 10px;
+            color: #dfe2e6;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus {
+            outline: none;
+            border-color: #9c688d;
+            box-shadow: 0 0 0 3px rgba(156, 104, 141, 0.1);
+            background: rgba(223, 226, 230, 0.12);
+        }
+
+        input::placeholder {
+            color: rgba(223, 226, 230, 0.5);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .radio-option {
+            flex: 1;
+            position: relative;
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .radio-option label {
+            display: block;
+            padding: 12px 16px;
+            background: rgba(223, 226, 230, 0.08);
+            border: 1px solid rgba(156, 104, 141, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            text-transform: none;
+            letter-spacing: normal;
+            color: #dfe2e6;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            background: linear-gradient(135deg, rgba(156, 104, 141, 0.2), rgba(15, 113, 113, 0.2));
+            border-color: #9c688d;
+            color: #9c688d;
+            font-weight: 600;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #9c688d, #0f7171);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(156, 104, 141, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .success-screen {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #9c688d, #0f7171);
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            box-shadow: 0 8px 25px rgba(156, 104, 141, 0.3);
+        }
+
+        .success-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #9c688d;
+            margin-bottom: 16px;
+        }
+
+        .success-message {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #dfe2e6;
+            opacity: 0.9;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 24px;
+            border-top: 1px solid rgba(156, 104, 141, 0.1);
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: #9c688d;
+            margin-bottom: 8px;
+        }
+
+        .footer-brand {
+            font-size: 12px;
+            color: rgba(223, 226, 230, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .error-message {
+            color: #f1716e;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            .event-title {
+                font-size: 28px;
+            }
+
+            .form-container {
+                padding: 24px 20px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="event-icon">🐕</div>
+            <h1 class="event-title">Encontro Pet</h1>
+            <p class="event-subtitle">Especial Salsichas</p>
+            <p class="event-date">31 de Março de 2026</p>
+        </header>
+
+        <div class="description">
+            <p>Venha participar do <span class="highlight">maior encontro de Salsichas</span> da região!</p>
+            <p>Um evento especial para tutores apaixonados por essa raça única e cheia de personalidade.</p>
+            <p>Atividades, diversão e muito amor canino te esperam no Norte Shopping.</p>
+        </div>
+
+        <div class="form-container" id="form-container">
+            <h2 class="form-title">Inscreva-se Gratuitamente</h2>
+            
+            <form id="registration-form" data-shopping="Norte Shopping" data-evento="Encontro Pet - Salsichas - 31 de Março de 2026">
+                <div class="form-group">
+                    <label for="nome">Nome Completo *</label>
+                    <input type="text" id="nome" name="nome" required>
+                    <div class="error-message" id="nome-error">Campo obrigatório</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone *</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                    <div class="error-message" id="telefone-error">Campo obrigatório</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message" id="email-error">Campo obrigatório</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00">
+                </div>
+
+                <div class="form-group">
+                    <label for="cidade">Cidade *</label>
+                    <input type="text" id="cidade" name="cidade" list="lista-cidades" autocomplete="off" placeholder="Digite sua cidade..." required list="lista-cidades" autocomplete="off" >
+                    
+                    <div class="error-message" id="cidade-error">Campo obrigatório</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="data_nascimento">Data de Nascimento</label>
+                    <input type="text" id="data_nascimento" name="data_nascimento" placeholder="DD/MM/AAAA">
+                </div>
+
+                <div class="form-group">
+                    <label>Possui cadastro no AJFans?</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="ajfans_sim" name="ajfans" value="Sim">
+                            <label for="ajfans_sim">Sim</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="ajfans_nao" name="ajfans" value="Não">
+                            <label for="ajfans_nao">Não</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    <div class="loading" id="loading"></div>
+                    <span id="btn-text">Confirmar Inscrição</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="success-screen" id="success-screen">
+            <div class="success-icon">✓</div>
+            <h2 class="success-title">Inscrição Confirmada!</h2>
+            <p class="success-message">
+                Parabéns! Sua inscrição foi realizada com sucesso.<br>
+                Nos vemos no Encontro Pet - Salsichas!<br><br>
+                <strong>31 de Março de 2026</strong><br>
+                Norte Shopping
+            </p>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-logo">Norte Shopping</div>
+            <div class="footer-brand">Almeida Junior</div>
+        </footer>
+    </div>
+
+    <script>
+        const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycby6JRXnixJ0qQ_IupSKWHWYQDT-1RgkIZVxnLluf52mlrA_p6hnwcyLVFs9JUCenPB-/exec';
+
+        // Populate cities datalist
+        document.addEventListener('DOMContentLoaded', function() {
+            const datalist = document.getElementById('lista-cidades');
+            if (typeof CIDADES_BR !== 'undefined') {
+                CIDADES_BR.forEach(cidade => {
+                    const option = document.createElement('option');
+                    option.value = cidade;
+                    datalist.appendChild(option);
+                });
+            }
+        });
+
+        // Phone mask
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+                value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+                value = value.replace(/(\d{0,2})/, '($1');
+                e.target.value = value;
+            }
+        });
+
+        // CPF mask
+        document.getElementById('cpf').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+            e.target.value = value;
+        });
+
+        // Date mask
+        document.getElementById('data_nascimento').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+            value = value.replace(/(\d{2})(\d{2})(\d{0,4})/, '$1/$2/$3');
+            value = value.replace(/(\d{2})(\d{0,2})/, '$1/$2');
+            e.target.value = value;
+        });
+
+        // Form validation and submission
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = document.getElementById('submit-btn');
+            const loading = document.getElementById('loading');
+            const btnText = document.getElementById('btn-text');
+            
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.style.display = 'none';
+            });
+            document.querySelectorAll('input').forEach(input => {
+                input.style.borderColor = 'rgba(156, 104, 141, 0.2)';
+            });
+
+            // Validation
+            let isValid = true;
+            const requiredFields = ['nome', 'telefone', 'email', 'cidade'];
+            
+            requiredFields.forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                if (!field.value.trim()) {
+                    const error = document.getElementById(fieldName + '-error');
+                    if (error) {
+                        error.style.display = 'block';
+                        field.style.borderColor = '#f1716e';
+                    }
+                    isValid = false;
+                }
+            });
+
+            // Email validation
+            const email = document.getElementById('email').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email && !emailRegex.test(email)) {
+                document.getElementById('email-error').textContent = 'E-mail inválido';
+                document.getElementById('email-error').style.display = 'block';
+                document.getElementById('email').style.borderColor = '#f1716e';
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            // Show loading
+            submitBtn.disabled = true;
+            loading.style.display = 'inline-block';
+            btnText.textContent = 'Enviando...';
+
+            // Prepare form data
+            const formData = new FormData(form);
+            const data = {
+                data_registro: new Date().toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'}),
+                shopping: form.dataset.shopping,
+                evento: form.dataset.evento
+            };
+
+            // Add form fields to data
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+
+            // Submit form
+            fetch(FORM_ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            }).then(() => {
+                // Show success screen
+                document.getElementById('form-container').style.display = 'none';
+                document.getElementById('success-screen').style.display = 'block';
+            }).catch((error) => {
+                console.error('Error:', error);
+                // Show success screen even on error due to no-cors mode
+                document.getElementById('form-container').style.display = 'none';
+                document.getElementById('success-screen').style.display = 'block';
+            }).finally(() => {
+                // Reset button
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+                btnText.textContent = 'Confirmar Inscrição';
+            });
+        });
+    </script>
+
+<datalist id="lista-cidades"></datalist>
+<script src="https://carlosgravi.github.io/landflow-sites/cidades_br.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof CIDADES_BR !== 'undefined') {
+        var dl = document.getElementById('lista-cidades');
+        CIDADES_BR.forEach(function(c) {
+            var opt = document.createElement('option');
+            opt.value = c;
+            dl.appendChild(opt);
+        });
+    }
+    // Validar que cidade selecionada esta na lista
+    var cidadeInput = document.getElementById('cidade');
+    if (cidadeInput) {
+        cidadeInput.addEventListener('change', function() {
+            if (typeof CIDADES_BR !== 'undefined' && this.value && CIDADES_BR.indexOf(this.value) === -1) {
+                this.setCustomValidity('Selecione uma cidade da lista');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>
