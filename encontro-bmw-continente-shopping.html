@@ -9,11 +9,11 @@
     <style>
         :root {
             --primary: #424872;
-            --primary-deep: #2e3351;
+            --primary-deep: #2d3250;
             --accent: #f1716e;
-            --accent-light: #f68983;
+            --accent-light: #ff8a87;
             --accent-soft: rgba(241, 113, 110, 0.12);
-            --bg: #031835;
+            --bg: #1a1d2e;
             --text: #f5f0eb;
             --text-muted: rgba(245, 240, 235, 0.55);
             --glass: rgba(66, 72, 114, 0.08);
@@ -28,7 +28,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: var(--bg);
+            background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
             position: relative;
@@ -57,9 +57,10 @@
         .header {
             width: calc(100% + 40px);
             margin-left: -20px;
+            margin-bottom: 32px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 100%);
-            padding: 48px 20px 32px;
             border-radius: 0 0 16px 16px;
+            padding: 48px 32px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -73,43 +74,17 @@
             width: 200%;
             height: 200%;
             background: 
-                radial-gradient(circle at 30% 20%, rgba(241, 113, 110, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 70% 80%, rgba(113, 100, 128, 0.08) 0%, transparent 40%);
-            animation: float 20s ease-in-out infinite;
+                radial-gradient(circle at 30% 70%, rgba(241, 113, 110, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+            animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(-20px, -20px) rotate(120deg); }
-            66% { transform: translate(20px, -10px) rotate(240deg); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
         }
 
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .event-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 48px;
-            font-weight: 300;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 8px;
-            line-height: 1.1;
-        }
-
-        .event-subtitle {
-            font-size: 14px;
-            font-weight: 300;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-
-        .bmw-logo {
+        .bmw-icon {
             width: 60px;
             height: 60px;
             margin: 0 auto 24px;
@@ -121,22 +96,44 @@
             font-size: 28px;
             font-weight: 600;
             color: var(--bg);
-            letter-spacing: 2px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .event-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .event-subtitle {
+            font-size: 16px;
+            font-weight: 300;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
         }
 
         .event-date {
             font-family: 'Cormorant Garamond', serif;
             font-size: 18px;
-            font-weight: 300;
-            color: var(--text);
-            letter-spacing: 2px;
+            font-weight: 400;
+            color: var(--accent);
+            margin-top: 16px;
+            position: relative;
+            z-index: 2;
         }
 
         .gold-divider {
             width: 60px;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            margin: 24px auto;
+            margin: 0 auto 24px;
         }
 
         .promo-text {
@@ -145,9 +142,8 @@
             font-weight: 300;
             font-style: italic;
             text-align: center;
-            color: var(--text-muted);
             margin-bottom: 32px;
-            line-height: 1.5;
+            color: var(--text-muted);
         }
 
         .form-card {
@@ -167,7 +163,7 @@
             text-transform: uppercase;
             color: var(--accent);
             text-align: center;
-            margin-bottom: 12px;
+            margin-bottom: 24px;
             position: relative;
         }
 
@@ -180,11 +176,11 @@
             margin: 12px auto 0;
         }
 
-        .form-group {
-            margin-bottom: 24px;
+        .field-group {
+            margin-bottom: 18px;
         }
 
-        .form-label {
+        .field-label {
             display: block;
             font-size: 11px;
             font-weight: 500;
@@ -194,59 +190,28 @@
             margin-bottom: 8px;
         }
 
-        .form-input {
+        .field-input {
             width: 100%;
             padding: 14px 16px;
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(241, 113, 110, 0.18);
             border-radius: 10px;
             color: var(--text);
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 300;
+            font-family: 'Inter', sans-serif;
             transition: all 0.3s ease;
         }
 
-        .form-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .form-input:focus {
+        .field-input:focus {
             outline: none;
             border-color: var(--accent);
             background: rgba(241, 113, 110, 0.06);
             box-shadow: 0 0 0 3px rgba(241, 113, 110, 0.08);
         }
 
-        .bmw-models {
-            display: grid;
-            gap: 8px;
-        }
-
-        .model-option {
-            position: relative;
-        }
-
-        .model-option input {
-            opacity: 0;
-            position: absolute;
-        }
-
-        .model-option label {
-            display: block;
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(241, 113, 110, 0.12);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-            font-weight: 300;
-        }
-
-        .model-option input:checked + label {
-            background: var(--accent-soft);
-            border-color: var(--accent);
-            font-weight: 400;
+        .field-input::placeholder {
+            color: var(--text-muted);
         }
 
         .submit-btn {
@@ -260,9 +225,11 @@
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
         }
 
         .submit-btn:hover {
@@ -273,18 +240,25 @@
         .submit-btn:disabled {
             opacity: 0.7;
             cursor: not-allowed;
+            transform: none;
         }
 
         .submit-btn.loading::after {
             content: '';
-            width: 16px;
-            height: 16px;
-            border: 2px solid var(--bg);
-            border-top: 2px solid transparent;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--bg);
             border-radius: 50%;
-            display: inline-block;
-            margin-left: 8px;
             animation: spin 1s linear infinite;
+        }
+
+        .submit-btn.loading .btn-text {
+            opacity: 0;
         }
 
         @keyframes spin {
@@ -297,15 +271,19 @@
             padding: 48px 24px;
         }
 
+        .success-screen.active {
+            display: block;
+        }
+
         .success-icon {
             width: 80px;
             height: 80px;
+            margin: 0 auto 24px;
             background: linear-gradient(135deg, var(--accent), var(--accent-light));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
             font-size: 32px;
             color: var(--bg);
         }
@@ -324,7 +302,6 @@
             font-weight: 300;
             max-width: 280px;
             margin: 0 auto;
-            line-height: 1.6;
         }
 
         .footer {
@@ -338,22 +315,18 @@
 
         @media (max-width: 380px) {
             .container {
-                padding: 0 16px 40px;
+                padding: 0 16px 32px;
             }
-            
             .header {
                 width: calc(100% + 32px);
                 margin-left: -16px;
-                padding: 40px 16px 28px;
+                padding: 32px 20px;
             }
-
-            .event-title {
-                font-size: 40px;
-                letter-spacing: 4px;
-            }
-
             .form-card {
-                padding: 28px 20px;
+                padding: 24px 18px;
+            }
+            .event-title {
+                font-size: 32px;
             }
         }
     </style>
@@ -361,177 +334,72 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="header-content">
-                <div class="bmw-logo">BMW</div>
-                <h1 class="event-title">Encontro BMW</h1>
-                <p class="event-subtitle">Continente Shopping</p>
-                <div class="event-date">10 de Abril de 2026</div>
-            </div>
+            <div class="bmw-icon">BMW</div>
+            <h1 class="event-title">Encontro BMW</h1>
+            <p class="event-subtitle">Continente Shopping</p>
+            <div class="event-date">10 de Abril de 2026</div>
         </div>
 
         <div class="gold-divider"></div>
 
         <p class="promo-text">
-            Uma celebração exclusiva para amantes, colecionadores e entusiastas da marca que define o prazer de dirigir.
+            Uma celebração exclusiva para amantes, colecionadores e entusiastas da marca BMW. Venha compartilhar sua paixão!
         </p>
 
-        <div class="form-card">
-            <form id="eventForm" data-shopping="Continente Shopping" data-evento="Encontro BMW - 10 de Abril de 2026">
-                <h2 class="form-title">Inscreva-se</h2>
-
-                <div class="form-group">
-                    <label class="form-label" for="nome">Nome Completo *</label>
-                    <input type="text" id="nome" name="nome" class="form-input" required placeholder="Digite seu nome completo">
+        <div class="form-card" id="form-card">
+            <h2 class="form-title">Inscreva-se</h2>
+            
+            <form id="event-form" data-shopping="Continente Shopping" data-evento="Encontro BMW - 10 de Abril de 2026">
+                <div class="field-group">
+                    <label class="field-label" for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" class="field-input" required>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label" for="telefone">Telefone *</label>
-                    <input type="tel" id="telefone" name="telefone" class="form-input" required placeholder="(00) 00000-0000">
+                <div class="field-group">
+                    <label class="field-label" for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" class="field-input" placeholder="(00) 00000-0000" required>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label" for="email">E-mail *</label>
-                    <input type="email" id="email" name="email" class="form-input" required placeholder="seuemail@exemplo.com">
+                <div class="field-group">
+                    <label class="field-label" for="email">E-mail</label>
+                    <input type="email" id="email" name="email" class="field-input" required>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label" for="cidade">Cidade *</label>
-                    <input type="text" id="cidade" name="cidade" class="form-input" list="lista-cidades" autocomplete="off" required placeholder="Digite sua cidade..." list="lista-cidades" autocomplete="off" >
+                <div class="field-group">
+                    <label class="field-label" for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade" class="field-input" placeholder="Digite sua cidade..." list="lista-cidades" autocomplete="off" required list="lista-cidades" autocomplete="off" >
                     
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label">Qual modelo da sua BMW?</label>
-                    <div class="bmw-models">
-                        <div class="model-option">
-                            <input type="radio" id="serie1" name="modelo_bmw" value="Série 1">
-                            <label for="serie1">Série 1</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="serie2" name="modelo_bmw" value="Série 2">
-                            <label for="serie2">Série 2</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="serie3" name="modelo_bmw" value="Série 3">
-                            <label for="serie3">Série 3</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="serie4" name="modelo_bmw" value="Série 4">
-                            <label for="serie4">Série 4</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="serie5" name="modelo_bmw" value="Série 5">
-                            <label for="serie5">Série 5</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="serie6" name="modelo_bmw" value="Série 6">
-                            <label for="serie6">Série 6</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="serie7" name="modelo_bmw" value="Série 7">
-                            <label for="serie7">Série 7</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="serie8" name="modelo_bmw" value="Série 8">
-                            <label for="serie8">Série 8</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="x1" name="modelo_bmw" value="X1">
-                            <label for="x1">X1</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="x2" name="modelo_bmw" value="X2">
-                            <label for="x2">X2</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="x3" name="modelo_bmw" value="X3">
-                            <label for="x3">X3</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="x4" name="modelo_bmw" value="X4">
-                            <label for="x4">X4</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="x5" name="modelo_bmw" value="X5">
-                            <label for="x5">X5</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="x6" name="modelo_bmw" value="X6">
-                            <label for="x6">X6</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="x7" name="modelo_bmw" value="X7">
-                            <label for="x7">X7</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="z4" name="modelo_bmw" value="Z4">
-                            <label for="z4">Z4</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="i3" name="modelo_bmw" value="i3">
-                            <label for="i3">i3</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="i4" name="modelo_bmw" value="i4">
-                            <label for="i4">i4</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="i8" name="modelo_bmw" value="i8">
-                            <label for="i8">i8</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="ix" name="modelo_bmw" value="iX">
-                            <label for="ix">iX</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="m2" name="modelo_bmw" value="M2">
-                            <label for="m2">M2</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="m3" name="modelo_bmw" value="M3">
-                            <label for="m3">M3</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="m4" name="modelo_bmw" value="M4">
-                            <label for="m4">M4</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="m5" name="modelo_bmw" value="M5">
-                            <label for="m5">M5</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="m8" name="modelo_bmw" value="M8">
-                            <label for="m8">M8</label>
-                        </div>
-                        <div class="model-option">
-                            <input type="radio" id="nao_possuo" name="modelo_bmw" value="Não possuo BMW">
-                            <label for="nao_possuo">Não possuo BMW</label>
-                        </div>
-                    </div>
+                <div class="field-group">
+                    <label class="field-label" for="modelo_bmw">Qual modelo da sua BMW?</label>
+                    <input type="text" id="modelo_bmw" name="modelo_bmw" class="field-input" placeholder="Ex: X3, Série 3, M4... ou 'Não possuo BMW'">
                 </div>
 
-                <button type="submit" class="submit-btn">Confirmar Inscrição</button>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Confirmar Inscrição</span>
+                </button>
             </form>
         </div>
 
-        <div class="success-screen" id="successScreen">
+        <div class="success-screen" id="success-screen">
             <div class="success-icon">✓</div>
-            <h2 class="success-title">Inscrição Confirmada!</h2>
+            <h3 class="success-title">Inscrição Confirmada!</h3>
             <p class="success-text">
-                Obrigado por se inscrever no Encontro BMW. Em breve você receberá mais informações sobre o evento.
+                Sua inscrição foi realizada com sucesso. Em breve você receberá mais informações sobre o evento.
             </p>
         </div>
 
-        <footer class="footer">
+        <div class="footer">
             Continente Shopping | Almeida Junior
-        </footer>
+        </div>
     </div>
 
     <script>
         const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycby6JRXnixJ0qQ_IupSKWHWYQDT-1RgkIZVxnLluf52mlrA_p6hnwcyLVFs9JUCenPB-/exec';
-        
+
         document.addEventListener('DOMContentLoaded', function() {
-            // Popular lista de cidades
+            // Popular datalist com cidades
             if (typeof CIDADES_BR !== 'undefined') {
                 const datalist = document.getElementById('lista-cidades');
                 CIDADES_BR.forEach(cidade => {
@@ -543,73 +411,71 @@
 
             // Máscara de telefone
             const telefoneInput = document.getElementById('telefone');
-            (\d)/, '($1) $2');
-                value = value.replace(/(\d{5})(\d)/, '$1-$2');
-                e.target.value = value;
+            (\d{5})(\d{4})/, '($1) $2-$3');
+                    value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+                    value = value.replace(/(\d{2})(\d{1,5})/, '($1) $2');
+                    value = value.replace(/(\d{2})/, '($1');
+                    e.target.value = value;
+                }
             });
 
-            // Submissão do formulário
-            const form = document.getElementById('eventForm');
-            const submitBtn = form.querySelector('.submit-btn');
-            const successScreen = document.getElementById('successScreen');
-
+            // Envio do formulário
+            const form = document.getElementById('event-form');
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
-
-                // Validação dos campos obrigatórios
+                
+                const submitBtn = form.querySelector('.submit-btn');
+                const formCard = document.getElementById('form-card');
+                const successScreen = document.getElementById('success-screen');
+                
+                // Validação básica
                 const requiredFields = form.querySelectorAll('[required]');
                 let isValid = true;
-
+                
                 requiredFields.forEach(field => {
                     if (!field.value.trim()) {
+                        field.focus();
                         isValid = false;
-                        field.style.borderColor = 'var(--accent)';
-                        field.style.background = 'rgba(241, 113, 110, 0.1)';
-                    } else {
-                        field.style.borderColor = 'rgba(241, 113, 110, 0.18)';
-                        field.style.background = 'rgba(255, 255, 255, 0.04)';
                     }
                 });
-
-                if (!isValid) {
-                    return;
-                }
-
+                
+                if (!isValid) return;
+                
                 // Loading state
                 submitBtn.disabled = true;
                 submitBtn.classList.add('loading');
-
-                // Preparar dados
-                const formData = new FormData(form);
-                const data = {
-                    data_registro: new Date().toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'}),
-                    shopping: form.dataset.shopping,
-                    evento: form.dataset.evento
-                };
-
-                formData.forEach((value, key) => {
-                    data[key] = value;
-                });
-
+                
                 try {
+                    const formData = new FormData(form);
+                    const data = {
+                        data_registro: new Date().toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'}),
+                        shopping: form.dataset.shopping,
+                        evento: form.dataset.evento,
+                        nome: formData.get('nome'),
+                        telefone: formData.get('telefone'),
+                        email: formData.get('email'),
+                        cidade: formData.get('cidade'),
+                        modelo_bmw: formData.get('modelo_bmw') || 'Não informado'
+                    };
+                    
                     await fetch(FORM_ENDPOINT, {
                         method: 'POST',
+                        mode: 'no-cors',
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        mode: 'no-cors',
                         body: JSON.stringify(data)
                     });
-
-                    // Mostrar tela de sucesso
-                    form.style.display = 'none';
-                    successScreen.style.display = 'block';
-
+                    
+                    // Sucesso
+                    formCard.style.display = 'none';
+                    successScreen.classList.add('active');
+                    
                 } catch (error) {
-                    console.error('Erro:', error);
-                    // Mesmo em caso de erro, mostrar sucesso (devido ao no-cors)
-                    form.style.display = 'none';
-                    successScreen.style.display = 'block';
+                    console.error('Erro no envio:', error);
+                    // Em caso de erro, ainda mostra sucesso (no-cors)
+                    formCard.style.display = 'none';
+                    successScreen.classList.add('active');
                 } finally {
                     submitBtn.disabled = false;
                     submitBtn.classList.remove('loading');
