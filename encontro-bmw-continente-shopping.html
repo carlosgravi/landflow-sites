@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encontro BMW - Continente Shopping</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://carlosgravi.github.io/landflow-sites/cidades_br.js"></script>
+    <style>
+        :root {
+            --primary: #424872;
+            --primary-deep: #2e3354;
+            --accent: #f1716e;
+            --accent-light: #f59491;
+            --accent-soft: rgba(241, 113, 110, 0.12);
+            --bg: #1a1d2e;
+            --text: #f5f0eb;
+            --text-muted: rgba(245, 240, 235, 0.55);
+            --glass: rgba(66, 72, 114, 0.08);
+            --glass-border: rgba(241, 113, 110, 0.15);
+            --secondary: #716480;
+            --tertiary: #aea0ae;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(66, 72, 114, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 100%, rgba(241, 113, 110, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 460px;
+            margin: 0 auto;
+            padding: 0 20px 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            width: calc(100% + 40px);
+            margin-left: -20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 50%, var(--secondary) 100%);
+            border-radius: 0 0 16px 16px;
+            padding: 48px 20px 40px;
+            text-align: center;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 255, 255, 0.03) 2px,
+                rgba(255, 255, 255, 0.03) 4px
+            );
+            animation: shimmer 20s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%); }
+            100% { transform: translateX(100%) translateY(100%); }
+        }
+
+        .bmw-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--bg);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 32px rgba(241, 113, 110, 0.3);
+        }
+
+        .event-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 12px;
+            color: var(--text);
+            position: relative;
+            z-index: 1;
+        }
+
+        .event-subtitle {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--tertiary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .event-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--accent);
+            margin-top: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gold-divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            margin: 0 auto 24px;
+        }
+
+        .promo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 300;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 32px;
+            color: var(--text-muted);
+        }
+
+        .form-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 32px 24px;
+            backdrop-filter: blur(20px);
+            margin-bottom: 24px;
+        }
+
+        .form-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            text-align: center;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .form-title::after {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+            display: block;
+            margin: 12px auto 0;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(241, 113, 110, 0.18);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 300;
+            transition: all 0.3s ease;
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(241, 113, 110, 0.06);
+            box-shadow: 0 0 0 3px rgba(241, 113, 110, 0.08);
+        }
+
+        .bmw-models {
+            display: grid;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .model-option {
+            position: relative;
+        }
+
+        .model-option input[type="radio"] {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .model-option label {
+            display: block;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(241, 113, 110, 0.12);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .model-option input[type="radio"]:checked + label {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            font-weight: 400;
+            color: var(--text);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--accent), #e55f5c);
+            border: none;
+            border-radius: 10px;
+            color: var(--bg);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(241, 113, 110, 0.25);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .submit-btn.loading::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            top: 50%;
+            left: 50%;
+            margin: -8px 0 0 -8px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--bg);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .success-screen {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--bg);
+        }
+
+        .success-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .success-text {
+            color: var(--text-muted);
+            font-size: 15px;
+            font-weight: 300;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 10px;
+            color: rgba(241, 113, 110, 0.3);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 32px;
+        }
+
+        @media (max-width: 380px) {
+            .container {
+                padding: 0 16px 48px;
+            }
+            
+            .header {
+                width: calc(100% + 32px);
+                margin-left: -16px;
+                padding: 40px 16px 32px;
+            }
+            
+            .form-card {
+                padding: 24px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="bmw-logo">BMW</div>
+            <h1 class="event-title">ENCONTRO BMW</h1>
+            <p class="event-subtitle">Colecionadores & Entusiastas</p>
+            <p class="event-date">10 de Abril de 2026</p>
+        </div>
+
+        <div class="gold-divider"></div>
+
+        <p class="promo-text">
+            Conecte-se com outros apaixonados pela marca bávara em um encontro exclusivo no coração de São José.
+        </p>
+
+        <form id="registration-form" class="form-card" data-shopping="Continente Shopping" data-evento="Encontro BMW - 10 de Abril de 2026">
+            <h2 class="form-title">Inscreva-se</h2>
+
+            <div class="form-group">
+                <label class="form-label" for="nome">Nome Completo *</label>
+                <input type="text" id="nome" name="nome" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="telefone">Telefone *</label>
+                <input type="tel" id="telefone" name="telefone" class="form-input" placeholder="(00) 00000-0000" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="email">E-mail *</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="cidade">Cidade *</label>
+                <input type="text" id="cidade" name="cidade" class="form-input" placeholder="Digite sua cidade..." list="lista-cidades" autocomplete="off" required list="lista-cidades" autocomplete="off" >
+                
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Qual modelo da sua BMW? *</label>
+                <div class="bmw-models">
+                    <div class="model-option">
+                        <input type="radio" id="serie1" name="modelo_bmw" value="Série 1" required>
+                        <label for="serie1">Série 1</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="serie2" name="modelo_bmw" value="Série 2" required>
+                        <label for="serie2">Série 2</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="serie3" name="modelo_bmw" value="Série 3" required>
+                        <label for="serie3">Série 3</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="serie4" name="modelo_bmw" value="Série 4" required>
+                        <label for="serie4">Série 4</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="serie5" name="modelo_bmw" value="Série 5" required>
+                        <label for="serie5">Série 5</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="serie6" name="modelo_bmw" value="Série 6" required>
+                        <label for="serie6">Série 6</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="serie7" name="modelo_bmw" value="Série 7" required>
+                        <label for="serie7">Série 7</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="serie8" name="modelo_bmw" value="Série 8" required>
+                        <label for="serie8">Série 8</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="x1" name="modelo_bmw" value="X1" required>
+                        <label for="x1">X1</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="x3" name="modelo_bmw" value="X3" required>
+                        <label for="x3">X3</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="x5" name="modelo_bmw" value="X5" required>
+                        <label for="x5">X5</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="x6" name="modelo_bmw" value="X6" required>
+                        <label for="x6">X6</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="x7" name="modelo_bmw" value="X7" required>
+                        <label for="x7">X7</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="z4" name="modelo_bmw" value="Z4" required>
+                        <label for="z4">Z4</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="i3" name="modelo_bmw" value="i3" required>
+                        <label for="i3">i3</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="i4" name="modelo_bmw" value="i4" required>
+                        <label for="i4">i4</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="ix" name="modelo_bmw" value="iX" required>
+                        <label for="ix">iX</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="m2" name="modelo_bmw" value="M2" required>
+                        <label for="m2">M2</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="m3" name="modelo_bmw" value="M3" required>
+                        <label for="m3">M3</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="m4" name="modelo_bmw" value="M4" required>
+                        <label for="m4">M4</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="m5" name="modelo_bmw" value="M5" required>
+                        <label for="m5">M5</label>
+                    </div>
+                    <div class="model-option">
+                        <input type="radio" id="nao_possuo" name="modelo_bmw" value="Não possuo BMW" required>
+                        <label for="nao_possuo">Não possuo BMW</label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Confirmar Inscrição</button>
+        </form>
+
+        <div id="success-screen" class="success-screen">
+            <div class="success-icon">✓</div>
+            <h2 class="success-title">Inscrição Confirmada!</h2>
+            <p class="success-text">
+                Sua participação no Encontro BMW foi registrada com sucesso. Em breve você receberá mais informações.
+            </p>
+        </div>
+
+        <footer class="footer">
+            Continente Shopping | Almeida Junior
+        </footer>
+    </div>
+
+    <script>
+        const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycby6JRXnixJ0qQ_IupSKWHWYQDT-1RgkIZVxnLluf52mlrA_p6hnwcyLVFs9JUCenPB-/exec';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Populate cities datalist
+            if (typeof CIDADES_BR !== 'undefined') {
+                const datalist = document.getElementById('lista-cidades');
+                CIDADES_BR.forEach(cidade => {
+                    const option = document.createElement('option');
+                    option.value = cidade;
+                    datalist.appendChild(option);
+                });
+            }
+
+            // Phone mask
+            const phoneInput = document.getElementById('telefone');
+            phoneInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 11) {
+                    value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                } else if (value.length >= 6) {
+                    value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+                } else if (value.length >= 2) {
+                    value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+                }
+                e.target.value = value;
+            });
+
+            // Form submission
+            const form = document.getElementById('registration-form');
+            const submitBtn = form.querySelector('.submit-btn');
+            const successScreen = document.getElementById('success-screen');
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.classList.add('loading');
+                submitBtn.textContent = '';
+
+                // Prepare form data
+                const formData = new FormData(form);
+                const data = {
+                    data_registro: new Date().toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'}),
+                    shopping: form.dataset.shopping,
+                    evento: form.dataset.evento
+                };
+
+                // Add form fields to data
+                for (let [key, value] of formData.entries()) {
+                    data[key] = value;
+                }
+
+                try {
+                    await fetch(FORM_ENDPOINT, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    // Show success screen
+                    form.style.display = 'none';
+                    successScreen.style.display = 'block';
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    // Still show success to user
+                    form.style.display = 'none';
+                    successScreen.style.display = 'block';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('loading');
+                    submitBtn.textContent = 'Confirmar Inscrição';
+                }
+            });
+        });
+    </script>
+
+<datalist id="lista-cidades"></datalist>
+<script src="https://carlosgravi.github.io/landflow-sites/cidades_br.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof CIDADES_BR !== 'undefined') {
+        var dl = document.getElementById('lista-cidades');
+        CIDADES_BR.forEach(function(c) {
+            var opt = document.createElement('option');
+            opt.value = c;
+            dl.appendChild(opt);
+        });
+    }
+    // Validar que cidade selecionada esta na lista
+    var cidadeInput = document.getElementById('cidade');
+    if (cidadeInput) {
+        cidadeInput.addEventListener('change', function() {
+            if (typeof CIDADES_BR !== 'undefined' && this.value && CIDADES_BR.indexOf(this.value) === -1) {
+                this.setCustomValidity('Selecione uma cidade da lista');
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    }
+});
+</script>
+
+<script>
+(function(){
+
+    // Mask telefone: (00) 00000-0000
+    var telInput = document.getElementById('telefone') || document.querySelector('input[type="tel"]');
+    if (telInput) {
+        telInput.setAttribute('maxlength', '15');
+        telInput.setAttribute('placeholder', '(00) 00000-0000');
+        telInput.addEventListener('input', function(e) {
+            var v = e.target.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+            if (v.length > 6) {
+                v = '(' + v.slice(0, 2) + ') ' + v.slice(2, 7) + '-' + v.slice(7);
+            } else if (v.length > 2) {
+                v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
+            } else if (v.length > 0) {
+                v = '(' + v;
+            }
+            e.target.value = v;
+        });
+    }
+})();
+</script>
+</body>
+</html>
