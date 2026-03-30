@@ -2,487 +2,800 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encontro BMW - Continente Shopping</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script src="https://carlosgravi.github.io/landflow-sites/cidades_br.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>encontro bmw | Continente Shopping</title>
+    <meta name="theme-color" content="#031835">
     <style>
-        :root {
-            --primary: #424872;
-            --primary-deep: #2d3250;
-            --accent: #f1716e;
-            --accent-light: #ff8a87;
-            --accent-soft: rgba(241, 113, 110, 0.12);
-            --bg: #1a1d2e;
-            --text: #f5f0eb;
-            --text-muted: rgba(245, 240, 235, 0.55);
-            --glass: rgba(66, 72, 114, 0.08);
-            --glass-border: rgba(241, 113, 110, 0.15);
-        }
+    
+    :root {
+        --bg: #031835;
+        --bg-light: #dfe2e6;
+        --bg-form: #f5f5f5;
+        --primary: #424872;
+        --primary-40: rgba(66,72,114,0.4);
+        --primary-5: rgba(66,72,114,0.05);
+        --accent: #f1716e;
+        --accent-40: rgba(241,113,110,0.4);
+        --accent-30: rgba(241,113,110,0.3);
+        --accent-20: rgba(241,113,110,0.2);
+        --text: #dfe2e6;
+        --text-dark: #1a1a1a;
+        --text-dark-muted: rgba(26,26,26,0.6);
+        --text-dark-placeholder: rgba(26,26,26,0.25);
+        --border: rgba(26,26,26,0.15);
+    }
+    
+    
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            position: relative;
-            min-height: 100vh;
-        }
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
 
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background:
-                radial-gradient(ellipse at 50% 0%, rgba(66, 72, 114, 0.25) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 100%, rgba(241, 113, 110, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
-        }
+/* === HERO SECTION === */
+.lf-hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    overflow: hidden;
+}
 
-        .container {
-            max-width: 460px;
-            margin: 0 auto;
-            padding: 0 20px 48px;
-            position: relative;
-            z-index: 1;
-        }
+.lf-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px; height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--accent-40));
+}
 
-        .header {
-            width: calc(100% + 40px);
-            margin-left: -20px;
-            margin-bottom: 32px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 100%);
-            border-radius: 0 0 16px 16px;
-            padding: 48px 32px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+.lf-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px; height: 48px;
+    background: linear-gradient(to top, transparent, var(--accent-30));
+}
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle at 30% 70%, rgba(241, 113, 110, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
-            animation: float 6s ease-in-out infinite;
-        }
+.lf-hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    max-width: 720px;
+    width: 100%;
+    animation: fadeIn 1s ease-out;
+}
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(1deg); }
-        }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-        .bmw-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 24px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--bg);
-            position: relative;
-            z-index: 2;
-        }
+.lf-hero-logo {
+    height: 28px;
+    opacity: 0.6;
+    filter: brightness(0) invert(1);
+}
 
-        .event-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 42px;
-            font-weight: 300;
-            letter-spacing: 3px;
-            margin-bottom: 12px;
-            position: relative;
-            z-index: 2;
-        }
+.lf-hero h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(64px, 15vw, 120px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 2px;
+    line-height: 0.9;
+    color: var(--text);
+}
 
-        .event-subtitle {
-            font-size: 16px;
-            font-weight: 300;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 2;
-        }
+.lf-hero .lf-year {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: var(--accent);
+}
 
-        .event-date {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            font-weight: 400;
-            color: var(--accent);
-            margin-top: 16px;
-            position: relative;
-            z-index: 2;
-        }
+.lf-hero .lf-tagline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    opacity: 0.85;
+    max-width: 400px;
+}
 
-        .gold-divider {
-            width: 60px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            margin: 0 auto 24px;
-        }
+.lf-hero .lf-event-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
 
-        .promo-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
-            font-weight: 300;
-            font-style: italic;
-            text-align: center;
-            margin-bottom: 32px;
-            color: var(--text-muted);
-        }
+.lf-hero .lf-date {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
 
-        .form-card {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 32px 24px;
-            backdrop-filter: blur(20px);
-            margin-bottom: 24px;
-        }
+.lf-hero .lf-location {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
+}
 
-        .form-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 26px;
-            font-weight: 300;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--accent);
-            text-align: center;
-            margin-bottom: 24px;
-            position: relative;
-        }
+/* === CTA BUTTON === */
+.lf-btn-cta {
+    display: inline-block;
+    padding: 16px 48px;
+    background: transparent;
+    border: 1px solid var(--accent-40);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 8px;
+}
 
-        .form-title::after {
-            content: '';
-            width: 40px;
-            height: 1px;
-            background: var(--accent);
-            display: block;
-            margin: 12px auto 0;
-        }
+.lf-btn-cta:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+}
 
-        .field-group {
-            margin-bottom: 18px;
-        }
+/* === SECTIONS === */
+.lf-section {
+    padding: 80px 24px;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        .field-label {
-            display: block;
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--accent);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
+.lf-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        .field-input {
-            width: 100%;
-            padding: 14px 16px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(241, 113, 110, 0.18);
-            border-radius: 10px;
-            color: var(--text);
-            font-size: 15px;
-            font-weight: 300;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s ease;
-        }
+.lf-section-dark {
+    background: var(--bg);
+    color: var(--text);
+}
 
-        .field-input:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: rgba(241, 113, 110, 0.06);
-            box-shadow: 0 0 0 3px rgba(241, 113, 110, 0.08);
-        }
+.lf-section-light {
+    background: var(--bg-light);
+    color: var(--text-dark);
+}
 
-        .field-input::placeholder {
-            color: var(--text-muted);
-        }
+.lf-section-content {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+}
 
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--accent), #e85d5a);
-            border: none;
-            border-radius: 10px;
-            color: var(--bg);
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-family: 'Inter', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+/* === LABELS === */
+.lf-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent-30);
+    padding: 6px 16px;
+    margin-bottom: 20px;
+}
 
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(241, 113, 110, 0.25);
-        }
+/* === EDITORIAL TEXT === */
+.lf-editorial {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    opacity: 0.9;
+}
 
-        .submit-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
-        }
+.lf-divider-line {
+    width: 48px;
+    height: 1px;
+    background: var(--accent-30);
+    margin: 24px auto 0;
+}
 
-        .submit-btn.loading::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 20px;
-            height: 20px;
-            margin: -10px 0 0 -10px;
-            border: 2px solid transparent;
-            border-top: 2px solid var(--bg);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
+/* === FORM SECTION === */
+.lf-form-section {
+    padding: 80px 24px;
+    background: var(--bg-form);
+}
 
-        .submit-btn.loading .btn-text {
-            opacity: 0;
-        }
+.lf-form-wrapper {
+    max-width: 540px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+.lf-form-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-        .success-screen {
-            display: none;
-            text-align: center;
-            padding: 48px 24px;
-        }
+.lf-form-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
 
-        .success-screen.active {
-            display: block;
-        }
+.lf-form-header h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 32px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-dark);
+    margin-top: 16px;
+}
 
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 24px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            color: var(--bg);
-        }
+/* === FORM FIELDS — UNDERLINE STYLE === */
+.lf-field {
+    margin-bottom: 28px;
+}
 
-        .success-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            font-weight: 300;
-            color: var(--accent);
-            margin-bottom: 16px;
-        }
+.lf-field > label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-dark-muted);
+    margin-bottom: 8px;
+}
 
-        .success-text {
-            color: var(--text-muted);
-            font-size: 15px;
-            font-weight: 300;
-            max-width: 280px;
-            margin: 0 auto;
-        }
+.lf-field > label .req {
+    opacity: 0.4;
+    font-weight: 400;
+}
 
-        .footer {
-            text-align: center;
-            font-size: 10px;
-            color: rgba(241, 113, 110, 0.3);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 32px;
-        }
+.lf-input {
+    width: 100%;
+    padding: 12px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-dark);
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    transition: border-color 0.3s;
+    outline: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
 
-        @media (max-width: 380px) {
-            .container {
-                padding: 0 16px 32px;
-            }
-            .header {
-                width: calc(100% + 32px);
-                margin-left: -16px;
-                padding: 32px 20px;
-            }
-            .form-card {
-                padding: 24px 18px;
-            }
-            .event-title {
-                font-size: 32px;
-            }
-        }
+.lf-input:focus {
+    border-bottom-color: var(--primary);
+}
+
+.lf-input::placeholder {
+    color: var(--text-dark-placeholder);
+}
+
+/* === RADIO PILLS === */
+.lf-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.lf-radio-card {
+    display: flex;
+    align-items: center;
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-dark-muted);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+}
+
+.lf-radio-card:hover {
+    border-color: var(--primary-40);
+    color: var(--text-dark);
+}
+
+.lf-radio-card input[type="radio"],
+.lf-radio-card input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+}
+
+.lf-radio-card.selected {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-5);
+}
+
+.lf-radio-card span {
+    position: relative;
+    z-index: 1;
+}
+
+/* === FORM DIVIDER === */
+.lf-form-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+}
+
+/* === SUBMIT — EDITORIAL === */
+.lf-submit {
+    width: 100%;
+    padding: 18px 48px;
+    background: transparent;
+    border: 1px solid var(--primary-40);
+    color: var(--text-dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 24px;
+    position: relative;
+}
+
+.lf-submit:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--bg-light);
+}
+
+.lf-submit:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.lf-submit.loading {
+    color: transparent;
+    pointer-events: none;
+}
+
+.lf-submit.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 20px; height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* === ERROR === */
+.lf-field.error .lf-input {
+    border-bottom-color: #c0392b;
+}
+
+.lf-field.error .lf-radio-card {
+    border-color: rgba(192,57,43,0.4);
+}
+
+.lf-field .lf-error {
+    font-size: 11px;
+    color: #c0392b;
+    margin-top: 6px;
+    display: none;
+}
+
+.lf-field.error .lf-error { display: block; }
+
+/* === SUCCESS === */
+.lf-success {
+    display: none;
+    text-align: center;
+    padding: 80px 24px;
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+.lf-success.active { display: block; }
+
+.lf-success-icon {
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--accent-40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    font-size: 28px;
+    color: var(--accent);
+    animation: successFade 0.6s ease-out 0.2s backwards;
+}
+
+@keyframes successFade {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.lf-success h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 28px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+}
+
+.lf-success p {
+    color: var(--text-dark-muted);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* === FOOTER === */
+.lf-footer {
+    background: var(--bg);
+    padding: 56px 24px;
+    text-align: center;
+}
+
+.lf-footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.lf-footer-logo {
+    height: 24px;
+    opacity: 0.5;
+    filter: brightness(0) invert(1);
+}
+
+.lf-footer p {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+}
+
+.lf-footer .lf-divider-line {
+    background: var(--accent-20);
+}
+
+.lf-footer .lf-copyright {
+    color: rgba(255,255,255,0.2);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 480px) {
+    .lf-hero { padding: 48px 20px; }
+    .lf-section { padding: 56px 20px; }
+    .lf-form-section { padding: 56px 20px; }
+    .lf-hero h1 { font-size: 56px; }
+}
+
+.lf-hidden { display: none !important; }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="bmw-icon">BMW</div>
-            <h1 class="event-title">Encontro BMW</h1>
-            <p class="event-subtitle">Continente Shopping</p>
-            <div class="event-date">10 de Abril de 2026</div>
+
+<main>
+    <!-- HERO -->
+    <section class="lf-hero" style="background:var(--bg);">
+        <div class="lf-hero-content">
+            <h1>encontro bmw</h1>
+            <p class="lf-year">2026</p>
+            <p class="lf-tagline">Paixão sobre rodas, histórias compartilhadas</p>
+            <div class="lf-event-meta">
+                <p class="lf-date">10.04  |  14H</p>
+                <p class="lf-location">Praça de Alimentação - Piso L2</p>
+            </div>
+            <button class="lf-btn-cta">Quero participar</button>
         </div>
+    </section>
 
-        <div class="gold-divider"></div>
+    <section class="lf-section lf-section-light">
+        <div class="lf-section-content">
+            <span class="lf-label">Sobre o evento</span>
+            <p class="lf-editorial">Um encontro especial para celebrar a paixão pela marca bávara. Colecionadores, entusiastas e admiradores se reúnem para compartilhar experiências e histórias sobre seus BMW.</p>
+        </div>
+    </section>
 
-        <p class="promo-text">
-            Uma celebração exclusiva para amantes, colecionadores e entusiastas da marca BMW. Venha compartilhar sua paixão!
-        </p>
+    <section class="lf-section lf-section-dark">
+        <div class="lf-section-content">
+            <span class="lf-label" style="border-color:var(--accent-30);">Experiencia</span>
+            <p class="lf-editorial" style="color:var(--text);">Conecte-se com outros apaixonados pela ultimate driving machine.</p>
+            <div class="lf-divider-line"></div>
+        </div>
+    </section>
 
-        <div class="form-card" id="form-card">
-            <h2 class="form-title">Inscreva-se</h2>
-            
-            <form id="event-form" data-shopping="Continente Shopping" data-evento="Encontro BMW - 10 de Abril de 2026">
-                <div class="field-group">
-                    <label class="field-label" for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome" class="field-input" required>
-                </div>
+    <section class="lf-section lf-section-light">
+        <div class="lf-section-content">
+            <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;font-style:italic;line-height:1.4;color:var(--text-dark);">
+                Você é nosso convidado para estar conosco no <span style='color:var(--primary)'>ENCONTRO BMW 2026</span>.
+            </h2>
+            <button class="lf-btn-cta" style="border-color:var(--primary-40);color:var(--text-dark);margin-top:24px;"
+                    onmouseover="this.style.background='var(--primary)';this.style.color='var(--bg-light)'"
+                    onmouseout="this.style.background='transparent';this.style.color='var(--text-dark)'">
+                Quero participar
+            </button>
+        </div>
+    </section>
 
-                <div class="field-group">
-                    <label class="field-label" for="telefone">Telefone</label>
-                    <input type="tel" id="telefone" name="telefone" class="field-input" placeholder="(00) 00000-0000" required>
-                </div>
+    <!-- FORM -->
+    <section class="lf-form-section" id="lf-form-section">
+        <div class="lf-form-wrapper">
+            <div class="lf-form-header">
+                <span class="lf-label" style="color:var(--primary);border-color:var(--primary-40);">Inscrição</span>
+                <h2>Registre seu interesse</h2>
+            </div>
 
-                <div class="field-group">
-                    <label class="field-label" for="email">E-mail</label>
-                    <input type="email" id="email" name="email" class="field-input" required>
-                </div>
-
-                <div class="field-group">
-                    <label class="field-label" for="cidade">Cidade</label>
-                    <input type="text" id="cidade" name="cidade" class="field-input" placeholder="Digite sua cidade..." list="lista-cidades" autocomplete="off" required list="lista-cidades" autocomplete="off" >
-                    
-                </div>
-
-                <div class="field-group">
-                    <label class="field-label" for="modelo_bmw">Qual modelo da sua BMW?</label>
-                    <input type="text" id="modelo_bmw" name="modelo_bmw" class="field-input" placeholder="Ex: X3, Série 3, M4... ou 'Não possuo BMW'">
-                </div>
-
-                <button type="submit" class="submit-btn">
-                    <span class="btn-text">Confirmar Inscrição</span>
-                </button>
+            <form id="lf-form" data-shopping="Continente Shopping" data-evento="Encontro BMW - 10 de Abril de 2026">
+                
+            <div class="lf-field">
+                <label>Nome completo <span class="req">*</span></label>
+                <input class="lf-input" type="text" id="nome_completo" name="nome_completo"
+                       placeholder="Seu nome completo" autocomplete="off" required>
+                <span class="lf-error">Campo obrigatorio</span>
+            </div>
+            <div class="lf-field">
+                <label>Telefone <span class="req">*</span></label>
+                <input class="lf-input" type="tel" id="telefone" name="telefone"
+                       placeholder="(00) 00000-0000" autocomplete="off" required>
+                <span class="lf-error">Campo obrigatorio</span>
+            </div>
+            <div class="lf-field">
+                <label>E-mail <span class="req">*</span></label>
+                <input class="lf-input" type="email" id="e-mail" name="e-mail"
+                       placeholder="seu@email.com" autocomplete="off" required>
+                <span class="lf-error">Campo obrigatorio</span>
+            </div>
+            <div class="lf-field">
+                <label>Cidade <span class="req">*</span></label>
+                <input class="lf-input" type="text" id="cidade" name="cidade"
+                       placeholder="Digite sua cidade..." list="lista-cidades" autocomplete="off" required list="lista-cidades" autocomplete="off" >
+                <span class="lf-error">Selecione uma cidade</span>
+            </div>
+            <div class="lf-field">
+                <label>Qual modelo da sua BMW? (listar modelos possíveis, uma seleção só, se não tiver bmw marca não possuo)</label>
+                <input class="lf-input" type="text" id="qual_modelo_da_sua_bmw_(listar_modelos_possiveis,_uma_selecao_so,_se_nao_tiver_bmw_marca_nao_possuo)" name="qual_modelo_da_sua_bmw_(listar_modelos_possiveis,_uma_selecao_so,_se_nao_tiver_bmw_marca_nao_possuo)"
+                       placeholder="" autocomplete="off">
+                <span class="lf-error">Campo obrigatorio</span>
+            </div>
+                <button type="submit" class="lf-submit">Enviar</button>
             </form>
+
+            <div class="lf-success">
+                <div class="lf-success-icon">&#10003;</div>
+                <h2>Inscrição confirmada!</h2>
+                <p>Seus dados foram registrados com sucesso.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="success-screen" id="success-screen">
-            <div class="success-icon">✓</div>
-            <h3 class="success-title">Inscrição Confirmada!</h3>
-            <p class="success-text">
-                Sua inscrição foi realizada com sucesso. Em breve você receberá mais informações sobre o evento.
-            </p>
+    <!-- FOOTER -->
+    <footer class="lf-footer">
+        <div class="lf-footer-content">
+            <p>Continente Shopping — Almeida Junior</p>
+            <div class="lf-divider-line"></div>
+            <p class="lf-copyright">&copy; 2026 Continente Shopping. Todos os direitos reservados.</p>
         </div>
+    </footer>
+</main>
 
-        <div class="footer">
-            Continente Shopping | Almeida Junior
-        </div>
-    </div>
+<script>
 
-    <script>
-        const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycby6JRXnixJ0qQ_IupSKWHWYQDT-1RgkIZVxnLluf52mlrA_p6hnwcyLVFs9JUCenPB-/exec';
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycby6JRXnixJ0qQ_IupSKWHWYQDT-1RgkIZVxnLluf52mlrA_p6hnwcyLVFs9JUCenPB-/exec';
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Popular datalist com cidades
-            if (typeof CIDADES_BR !== 'undefined') {
-                const datalist = document.getElementById('lista-cidades');
-                CIDADES_BR.forEach(cidade => {
-                    const option = document.createElement('option');
-                    option.value = cidade;
-                    datalist.appendChild(option);
-                });
+document.addEventListener('DOMContentLoaded', function() {
+
+    // === SCROLL ANIMATIONS ===
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
             }
-
-            // Máscara de telefone
-            const telefoneInput = document.getElementById('telefone');
-            (\d{5})(\d{4})/, '($1) $2-$3');
-                    value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
-                    value = value.replace(/(\d{2})(\d{1,5})/, '($1) $2');
-                    value = value.replace(/(\d{2})/, '($1');
-                    e.target.value = value;
-                }
-            });
-
-            // Envio do formulário
-            const form = document.getElementById('event-form');
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                
-                const submitBtn = form.querySelector('.submit-btn');
-                const formCard = document.getElementById('form-card');
-                const successScreen = document.getElementById('success-screen');
-                
-                // Validação básica
-                const requiredFields = form.querySelectorAll('[required]');
-                let isValid = true;
-                
-                requiredFields.forEach(field => {
-                    if (!field.value.trim()) {
-                        field.focus();
-                        isValid = false;
-                    }
-                });
-                
-                if (!isValid) return;
-                
-                // Loading state
-                submitBtn.disabled = true;
-                submitBtn.classList.add('loading');
-                
-                try {
-                    const formData = new FormData(form);
-                    const data = {
-                        data_registro: new Date().toLocaleString('pt-BR', {timeZone: 'America/Sao_Paulo'}),
-                        shopping: form.dataset.shopping,
-                        evento: form.dataset.evento,
-                        nome: formData.get('nome'),
-                        telefone: formData.get('telefone'),
-                        email: formData.get('email'),
-                        cidade: formData.get('cidade'),
-                        modelo_bmw: formData.get('modelo_bmw') || 'Não informado'
-                    };
-                    
-                    await fetch(FORM_ENDPOINT, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(data)
-                    });
-                    
-                    // Sucesso
-                    formCard.style.display = 'none';
-                    successScreen.classList.add('active');
-                    
-                } catch (error) {
-                    console.error('Erro no envio:', error);
-                    // Em caso de erro, ainda mostra sucesso (no-cors)
-                    formCard.style.display = 'none';
-                    successScreen.classList.add('active');
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove('loading');
-                }
-            });
         });
-    </script>
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.lf-section, .lf-form-wrapper').forEach(function(el) {
+        observer.observe(el);
+    });
+
+    // === SMOOTH SCROLL TO FORM ===
+    document.querySelectorAll('.lf-btn-cta').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var formSection = document.getElementById('lf-form-section');
+            if (formSection) formSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    var form = document.getElementById('lf-form');
+    if (!form) return;
+
+    var submitBtn = form.querySelector('.lf-submit');
+    var formSection = document.getElementById('lf-form-section');
+    var successEl = document.querySelector('.lf-success');
+
+    // === MASKS ===
+    var telInput = document.getElementById('telefone') || form.querySelector('input[type="tel"]');
+    if (telInput) {
+        telInput.setAttribute('maxlength', '15');
+        telInput.addEventListener('input', function(e) {
+            var v = e.target.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+            if (v.length > 6) v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+            else if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+            else if (v.length > 0) v = '(' + v;
+            e.target.value = v;
+        });
+    }
+
+    var dataInput = document.getElementById('data_nascimento')
+        || document.getElementById('nascimento')
+        || form.querySelector('input[name="data_nascimento"]');
+    if (dataInput) {
+        dataInput.setAttribute('maxlength', '10');
+        dataInput.setAttribute('inputmode', 'numeric');
+        dataInput.setAttribute('type', 'text');
+        dataInput.addEventListener('input', function(e) {
+            var v = e.target.value.replace(/\D/g, '');
+            if (v.length > 8) v = v.slice(0, 8);
+            if (v.length > 4) v = v.slice(0,2) + '/' + v.slice(2,4) + '/' + v.slice(4);
+            else if (v.length > 2) v = v.slice(0,2) + '/' + v.slice(2);
+            e.target.value = v;
+        });
+    }
+
+    // === RADIO/CHECKBOX CARDS ===
+    form.querySelectorAll('.lf-radio-card').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+            var input = this.querySelector('input');
+            if (input.type === 'radio') {
+                this.closest('.lf-radio-group').querySelectorAll('.lf-radio-card').forEach(function(c) {
+                    c.classList.remove('selected');
+                });
+                input.checked = true;
+                this.classList.add('selected');
+            } else if (input.type === 'checkbox') {
+                input.checked = !input.checked;
+                this.classList.toggle('selected', input.checked);
+            }
+            this.closest('.lf-field').classList.remove('error');
+        });
+    });
+
+    // === VALIDATION ===
+    function validar() {
+        var valido = true;
+        form.querySelectorAll('.lf-field').forEach(function(f) { f.classList.remove('error'); });
+
+        form.querySelectorAll('.lf-input[required]').forEach(function(input) {
+            if (!input.value.trim()) {
+                input.closest('.lf-field').classList.add('error');
+                valido = false;
+            }
+            if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+                input.closest('.lf-field').classList.add('error');
+                valido = false;
+            }
+            if (input.type === 'tel' && input.value.replace(/\D/g, '').length < 10) {
+                input.closest('.lf-field').classList.add('error');
+                valido = false;
+            }
+        });
+
+        form.querySelectorAll('.lf-radio-group[data-required="true"]').forEach(function(group) {
+            if (!group.querySelector('input:checked')) {
+                group.closest('.lf-field').classList.add('error');
+                valido = false;
+            }
+        });
+
+        return valido;
+    }
+
+    // === SUBMIT ===
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        if (!validar()) {
+            var first = form.querySelector('.lf-field.error');
+            if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
+
+        submitBtn.classList.add('loading');
+        submitBtn.disabled = true;
+
+        var data = {
+            data_registro: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
+            shopping: form.dataset.shopping || '',
+            evento: form.dataset.evento || ''
+        };
+
+        form.querySelectorAll('.lf-input').forEach(function(input) {
+            if (input.name) data[input.name] = input.value.trim();
+        });
+
+        form.querySelectorAll('.lf-radio-group').forEach(function(group) {
+            var name = group.dataset.name;
+            if (!name) return;
+            var checkboxes = group.querySelectorAll('input[type="checkbox"]:checked');
+            if (checkboxes.length > 0) {
+                data[name] = Array.from(checkboxes).map(function(c) { return c.value; });
+            } else {
+                var radio = group.querySelector('input[type="radio"]:checked');
+                if (radio) data[name] = radio.value;
+            }
+        });
+
+        try {
+            await fetch(FORM_ENDPOINT, {
+                method: 'POST', mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            form.classList.add('lf-hidden');
+            document.querySelector('.lf-form-header').classList.add('lf-hidden');
+            successEl.classList.add('active');
+            successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } catch (err) {
+            alert('Erro ao enviar. Tente novamente.');
+        } finally {
+            submitBtn.classList.remove('loading');
+            submitBtn.disabled = false;
+        }
+    });
+
+    // === CLEAR ERRORS ===
+    form.querySelectorAll('.lf-input').forEach(function(input) {
+        input.addEventListener('input', function() {
+            this.closest('.lf-field').classList.remove('error');
+        });
+    });
+});
+
+</script>
 
 <datalist id="lista-cidades"></datalist>
 <script src="https://carlosgravi.github.io/landflow-sites/cidades_br.js"></script>
@@ -508,30 +821,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-</script>
-
-<script>
-(function(){
-
-    // Mask telefone: (00) 00000-0000
-    var telInput = document.getElementById('telefone') || document.querySelector('input[type="tel"]');
-    if (telInput) {
-        telInput.setAttribute('maxlength', '15');
-        telInput.setAttribute('placeholder', '(00) 00000-0000');
-        telInput.addEventListener('input', function(e) {
-            var v = e.target.value.replace(/\D/g, '');
-            if (v.length > 11) v = v.slice(0, 11);
-            if (v.length > 6) {
-                v = '(' + v.slice(0, 2) + ') ' + v.slice(2, 7) + '-' + v.slice(7);
-            } else if (v.length > 2) {
-                v = '(' + v.slice(0, 2) + ') ' + v.slice(2);
-            } else if (v.length > 0) {
-                v = '(' + v;
-            }
-            e.target.value = v;
-        });
-    }
-})();
 </script>
 </body>
 </html>
