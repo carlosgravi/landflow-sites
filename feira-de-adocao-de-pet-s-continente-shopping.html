@@ -488,13 +488,7 @@
     <script>
         const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycby6JRXnixJ0qQ_IupSKWHWYQDT-1RgkIZVxnLluf52mlrA_p6hnwcyLVFs9JUCenPB-/exec';
         
-        // Mascara de telefone
-        (\d)/g, '($1) $2');
-                value = value.replace(/(\d{5})(\d)/, '$1-$2');
-            }
-            
-            e.target.value = value;
-        });
+
         
         // Toggle visual dos checkboxes
         document.querySelectorAll('.pet-option').forEach(option => {
