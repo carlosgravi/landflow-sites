@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>encontro bmw | Continente Shopping</title>
+    <title>BMW Encontro | Continente Shopping</title>
     <meta name="theme-color" content="#031835">
     <style>
     
     :root {
         --bg: #031835;
         --bg-light: #dfe2e6;
-        --bg-form: #f5f5f5;
+        --bg-form: #f8f9fa;
         --primary: #424872;
         --primary-40: rgba(66,72,114,0.4);
         --primary-5: rgba(66,72,114,0.05);
@@ -19,10 +19,10 @@
         --accent-30: rgba(241,113,110,0.3);
         --accent-20: rgba(241,113,110,0.2);
         --text: #dfe2e6;
-        --text-dark: #1a1a1a;
-        --text-dark-muted: rgba(26,26,26,0.6);
-        --text-dark-placeholder: rgba(26,26,26,0.25);
-        --border: rgba(26,26,26,0.15);
+        --text-dark: #031835;
+        --text-dark-muted: rgba(3,24,53,0.6);
+        --text-dark-placeholder: rgba(3,24,53,0.25);
+        --border: rgba(3,24,53,0.15);
     }
     
     
@@ -512,6 +512,44 @@ body {
     .lf-hero h1 { font-size: 56px; }
 }
 
+/* === LGPD CHECKBOX === */
+.lf-lgpd {
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.lf-lgpd-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    color: var(--text-dark-muted);
+    line-height: 1.5;
+}
+
+.lf-lgpd-label input[type="checkbox"] {
+    margin-top: 2px;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary);
+    flex-shrink: 0;
+}
+
+.lf-lgpd-label a {
+    color: var(--primary);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.lf-lgpd-label a:hover {
+    opacity: 0.8;
+}
+
+.lf-lgpd .lf-error {
+    margin-left: 26px;
+}
+
 .lf-hidden { display: none !important; }
 
     </style>
@@ -522,12 +560,12 @@ body {
     <!-- HERO -->
     <section class="lf-hero" style="background:var(--bg);">
         <div class="lf-hero-content">
-            <h1>encontro bmw</h1>
+            <h1>BMW Encontro</h1>
             <p class="lf-year">2026</p>
-            <p class="lf-tagline">Paixão sobre rodas, histórias compartilhadas</p>
+            <p class="lf-tagline">Um encontro exclusivo para amantes, colecionadores e entusiastas BMW</p>
             <div class="lf-event-meta">
                 <p class="lf-date">10.04  |  14H</p>
-                <p class="lf-location">Praça de Alimentação - Piso L2</p>
+                <p class="lf-location">Praça Central - Piso L1</p>
             </div>
             <button class="lf-btn-cta">Quero participar</button>
         </div>
@@ -536,14 +574,14 @@ body {
     <section class="lf-section lf-section-light">
         <div class="lf-section-content">
             <span class="lf-label">Sobre o evento</span>
-            <p class="lf-editorial">Um encontro especial para celebrar a paixão pela marca bávara. Colecionadores, entusiastas e admiradores se reúnem para compartilhar experiências e histórias sobre seus BMW.</p>
+            <p class="lf-editorial">Uma experiência única para celebrar a paixão pela marca BMW. Conecte-se com outros entusiastas e descubra histórias fascinantes sobre os ícones bávaros.</p>
         </div>
     </section>
 
     <section class="lf-section lf-section-dark">
         <div class="lf-section-content">
             <span class="lf-label" style="border-color:var(--accent-30);">Experiencia</span>
-            <p class="lf-editorial" style="color:var(--text);">Conecte-se com outros apaixonados pela ultimate driving machine.</p>
+            <p class="lf-editorial" style="color:var(--text);">Viva momentos únicos ao lado de quem compartilha a mesma paixão pelos motores BMW.</p>
             <div class="lf-divider-line"></div>
         </div>
     </section>
@@ -551,7 +589,7 @@ body {
     <section class="lf-section lf-section-light">
         <div class="lf-section-content">
             <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;font-style:italic;line-height:1.4;color:var(--text-dark);">
-                Você é nosso convidado para estar conosco no <span style='color:var(--primary)'>ENCONTRO BMW 2026</span>.
+                Você é nosso convidado para estar conosco no <span style='color:var(--primary)'>BMW ENCONTRO 2026</span>.
             </h2>
             <button class="lf-btn-cta" style="border-color:var(--primary-40);color:var(--text-dark);margin-top:24px;"
                     onmouseover="this.style.background='var(--primary)';this.style.color='var(--bg-light)'"
@@ -566,48 +604,159 @@ body {
         <div class="lf-form-wrapper">
             <div class="lf-form-header">
                 <span class="lf-label" style="color:var(--primary);border-color:var(--primary-40);">Inscrição</span>
-                <h2>Registre seu interesse</h2>
+                <h2>Confirme sua participação</h2>
             </div>
 
             <form id="lf-form" data-shopping="Continente Shopping" data-evento="Encontro BMW - 10 de Abril de 2026">
                 
             <div class="lf-field">
                 <label>Nome completo <span class="req">*</span></label>
-                <input class="lf-input" type="text" id="nome_completo" name="nome_completo"
+                <input class="lf-input" type="text" id="nome" name="nome"
                        placeholder="Seu nome completo" autocomplete="off" required>
-                <span class="lf-error">Campo obrigatorio</span>
+                <span class="lf-error">Campo obrigatório</span>
             </div>
             <div class="lf-field">
                 <label>Telefone <span class="req">*</span></label>
                 <input class="lf-input" type="tel" id="telefone" name="telefone"
                        placeholder="(00) 00000-0000" autocomplete="off" required>
-                <span class="lf-error">Campo obrigatorio</span>
+                <span class="lf-error">Campo obrigatório</span>
             </div>
             <div class="lf-field">
                 <label>E-mail <span class="req">*</span></label>
-                <input class="lf-input" type="email" id="e-mail" name="e-mail"
+                <input class="lf-input" type="email" id="email" name="email"
                        placeholder="seu@email.com" autocomplete="off" required>
-                <span class="lf-error">Campo obrigatorio</span>
+                <span class="lf-error">Campo obrigatório</span>
             </div>
             <div class="lf-field">
                 <label>Cidade <span class="req">*</span></label>
                 <input class="lf-input" type="text" id="cidade" name="cidade"
                        placeholder="Digite sua cidade..." list="lista-cidades" autocomplete="off" required list="lista-cidades" autocomplete="off" >
-                <span class="lf-error">Selecione uma cidade</span>
+                <span class="lf-error">Selecione uma cidade da lista</span>
             </div>
+            <div class="lf-form-divider"></div>
             <div class="lf-field">
-                <label>Qual modelo da sua BMW? (listar modelos possíveis, uma seleção só, se não tiver bmw marca não possuo)</label>
-                <input class="lf-input" type="text" id="qual_modelo_da_sua_bmw_(listar_modelos_possiveis,_uma_selecao_so,_se_nao_tiver_bmw_marca_nao_possuo)" name="qual_modelo_da_sua_bmw_(listar_modelos_possiveis,_uma_selecao_so,_se_nao_tiver_bmw_marca_nao_possuo)"
-                       placeholder="" autocomplete="off">
-                <span class="lf-error">Campo obrigatorio</span>
+                <label>Qual modelo da sua BMW? <span class="req">*</span></label>
+                <div class="lf-radio-group" data-name="modelo_bmw" data-required="true">
+                    
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_0" value="Série 1">
+                    <span>Série 1</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_1" value="Série 2">
+                    <span>Série 2</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_2" value="Série 3">
+                    <span>Série 3</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_3" value="Série 4">
+                    <span>Série 4</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_4" value="Série 5">
+                    <span>Série 5</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_5" value="Série 7">
+                    <span>Série 7</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_6" value="Série 8">
+                    <span>Série 8</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_7" value="X1">
+                    <span>X1</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_8" value="X2">
+                    <span>X2</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_9" value="X3">
+                    <span>X3</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_10" value="X4">
+                    <span>X4</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_11" value="X5">
+                    <span>X5</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_12" value="X6">
+                    <span>X6</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_13" value="X7">
+                    <span>X7</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_14" value="Z4">
+                    <span>Z4</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_15" value="i3">
+                    <span>i3</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_16" value="i4">
+                    <span>i4</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_17" value="iX">
+                    <span>iX</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_18" value="M2">
+                    <span>M2</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_19" value="M3">
+                    <span>M3</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_20" value="M4">
+                    <span>M4</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_21" value="M5">
+                    <span>M5</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_22" value="M8">
+                    <span>M8</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_23" value="Outro modelo">
+                    <span>Outro modelo</span>
+                </label>
+                <label class="lf-radio-card">
+                    <input type="radio" name="modelo_bmw" id="modelo_bmw_24" value="Não possuo">
+                    <span>Não possuo</span>
+                </label>
+                </div>
+                <span class="lf-error">Selecione uma opção</span>
             </div>
-                <button type="submit" class="lf-submit">Enviar</button>
+
+                <div class="lf-lgpd">
+                    <label class="lf-lgpd-label">
+                        <input type="checkbox" id="lf-lgpd-check" required>
+                        <span>Li e aceito a <a href="https://carlosgravi.github.io/landflow-sites/encontro-bmw-continente-shopping-privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a></span>
+                    </label>
+                    <span class="lf-error">Você precisa aceitar a Política de Privacidade</span>
+                </div>
+
+                <button type="submit" class="lf-submit">Confirmar presença</button>
             </form>
 
             <div class="lf-success">
                 <div class="lf-success-icon">&#10003;</div>
                 <h2>Inscrição confirmada!</h2>
-                <p>Seus dados foram registrados com sucesso.</p>
+                <p>Sua participação foi registrada com sucesso. Nos vemos no encontro!</p>
             </div>
         </div>
     </section>
@@ -732,6 +881,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
+        // LGPD checkbox
+        var lgpdCheck = document.getElementById('lf-lgpd-check');
+        if (lgpdCheck && !lgpdCheck.checked) {
+            lgpdCheck.closest('.lf-lgpd').classList.add('error');
+            valido = false;
+        }
+
         return valido;
     }
 
@@ -750,7 +906,9 @@ document.addEventListener('DOMContentLoaded', function() {
         var data = {
             data_registro: new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
             shopping: form.dataset.shopping || '',
-            evento: form.dataset.evento || ''
+            evento: form.dataset.evento || '',
+            lgpd_aceite: 'Sim',
+            lgpd_timestamp: new Date().toISOString()
         };
 
         form.querySelectorAll('.lf-input').forEach(function(input) {
@@ -791,7 +949,43 @@ document.addEventListener('DOMContentLoaded', function() {
     form.querySelectorAll('.lf-input').forEach(function(input) {
         input.addEventListener('input', function() {
             this.closest('.lf-field').classList.remove('error');
+            checkFormReady();
         });
+    });
+
+    var lgpdCheck = document.getElementById('lf-lgpd-check');
+    if (lgpdCheck) {
+        lgpdCheck.addEventListener('change', function() {
+            this.closest('.lf-lgpd').classList.remove('error');
+            checkFormReady();
+        });
+    }
+
+    // === BOTAO DESABILITADO ATE PREENCHER TUDO ===
+    submitBtn.disabled = true;
+
+    function checkFormReady() {
+        var ready = true;
+
+        form.querySelectorAll('.lf-input[required]').forEach(function(input) {
+            if (!input.value.trim()) ready = false;
+            if (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) ready = false;
+            if (input.type === 'tel' && input.value.replace(/\D/g, '').length < 10) ready = false;
+        });
+
+        form.querySelectorAll('.lf-radio-group[data-required="true"]').forEach(function(group) {
+            if (!group.querySelector('input:checked')) ready = false;
+        });
+
+        var lgpd = document.getElementById('lf-lgpd-check');
+        if (lgpd && !lgpd.checked) ready = false;
+
+        submitBtn.disabled = !ready;
+    }
+
+    // Escutar mudancas em radio/checkbox cards tambem
+    form.querySelectorAll('.lf-radio-card input').forEach(function(input) {
+        input.addEventListener('change', checkFormReady);
     });
 });
 
